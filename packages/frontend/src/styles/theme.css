@@ -51,3 +51,34 @@
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
 }
+
+/* Overdue Todo Indicator (reuses --danger-color token for light/dark modes) */
+/* Specificity raised to a compound selector (.todo-card.todo-card--overdue)
+   so this reliably overrides the base .todo-card border declared later in
+   App.css, since @import hoists this file's rules above App.css's own
+   declarations and equal-specificity single-class selectors would
+   otherwise lose to source order (the base rule uses the `border`
+   shorthand, which resets all sides including border-left). */
+.todo-card.todo-card--overdue {
+  border-color: var(--danger-color);
+  border-left: 4px solid var(--danger-color);
+}
+
+.todo-badge--overdue {
+  display: inline-block;
+  margin-top: var(--space-xs);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background-color: var(--danger-color);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Dark mode's --danger-color (#ef5350) is too light for white text to meet
+   WCAG AA (4.5:1) at 12px; use dark text instead to preserve contrast while
+   keeping the danger-color background semantics. */
+[data-theme="dark"] .todo-badge--overdue {
+  color: #1a1a1a;
+}
