@@ -8,6 +8,12 @@
 
 **Input**: User description: "Support for Overdue Todo Items - As a todo application user, I want to easily identify and distinguish overdue tasks in my todo list, so that I can prioritize my work and quickly see which tasks are past their due date. Users need a clear, visual way to identify which todos have not been completed by their due date. This feature must include automated tests covering the overdue determination logic and its display, following the existing Jest patterns in the repository."
 
+## Clarifications
+
+### Session 2026-10-30
+
+- Q: How should overdue todos be visually indicated? → A: Both a danger-colored accent/border on the card AND an explicit "Overdue" text label shown as a tag/badge.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Visually Identify Overdue Todos (Priority: P1)
@@ -57,7 +63,7 @@ As a user, I want a todo's overdue status to be based on the current date, so th
 - **FR-002**: System MUST NOT mark a todo as overdue if it has no due date.
 - **FR-003**: System MUST NOT mark a todo as overdue if it is marked complete, regardless of due date.
 - **FR-004**: System MUST NOT mark a todo as overdue if its due date is today or in the future.
-- **FR-005**: The todo list display MUST visually distinguish overdue todos from non-overdue todos (e.g., distinct color/styling and/or a textual indicator such as "Overdue").
+- **FR-005**: The todo list display MUST visually distinguish overdue todos from non-overdue todos using both a danger-colored accent/border on the todo card AND an explicit "Overdue" text label displayed as a tag/badge.
 - **FR-006**: The overdue determination MUST be evaluated using date-only comparison (ignoring time-of-day) to avoid inconsistent results within the same calendar day.
 - **FR-007**: Overdue status MUST be computed dynamically at display time based on the current date, rather than being stored as a persisted field, so it always reflects the latest date without requiring data migration.
 
